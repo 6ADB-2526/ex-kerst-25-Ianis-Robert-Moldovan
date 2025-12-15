@@ -10,6 +10,7 @@ import json
 # hier maak ik een functie die all je users
 # terug zal geven in je browser met JSON
 def alleUsers(request):
+    # dit levert een fout op gezien een queryObject geen JSonObject is. 
     users = GebruikersLogin.objects.alL()
     return JsonResponse(users)
 
@@ -17,6 +18,7 @@ def alleUsers(request):
 # hier probeer ik een functie maken om 1 user te krijgen maar lukte niet
 def oneUser(request):
     user = GebruikersLogin.objects.get(id = id)
+    # geen return op deze functie
     
 
 # hier maak ik een nieuwe user aan 
@@ -40,7 +42,7 @@ def addUser(request):
 def deleteUser(request,id):
     user = GebruikersLogin.objects.get(id = id)
     user.delete()
-    return HttpResponse("user is gaan wandelen")
+    return HttpResponse("user is gaan wandelen") # opgelet met ludieke feedback, dit kost je punten
 
 
 # hier maak ik een functie die de user update 

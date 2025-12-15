@@ -1,3 +1,6 @@
+// STRUCTUUR = JS in een map Script plaatsen -1
+// Met dit stukje code heb je niet aangetoond dat je het kan. 
+
 
 // hier heb ik alles uit mijn html geselecteerd zodat ik het kan gebruikern in mijn javascript code 
 formLogin = document.getElementById("login")
