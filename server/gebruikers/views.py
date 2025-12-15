@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from gebruikers.models import GebruikersLogin
 from django.forms.models import model_to_dict
 import json
-
 
 # Create your views here.
 
@@ -15,12 +14,10 @@ def alleUsers(request):
     return JsonResponse(users)
 
 # get 1 user
+# hier probeer ik een functie maken om 1 user te krijgen maar lukte niet
 def oneUser(request):
     user = GebruikersLogin.objects.get(id = id)
     
-
-
-
 
 # hier maak ik een nieuwe user aan 
 # door gebruik van post_data zodat ik gegevens mee kan sturen 
@@ -43,10 +40,22 @@ def addUser(request):
 def deleteUser(request,id):
     user = GebruikersLogin.objects.get(id = id)
     user.delete()
-    return JsonResponse(deleteUser)
+    return HttpResponse("user is gaan wandelen")
 
 
-# def updateUser(request):
+# hier maak ik een functie die de user update 
+# op basis van het gekozen id
+def updateUser(request):
+    post_data =  json.loads(request.body.decode('utf-8'))
+    updated_user = post_data
+    updated_user = GebruikersLogin.objects.get(id = id)
+    updated_user.login = post_data["login"]
+    updated_user.password = post_data["password"]
+    updated_user.email = post_data["email"]
+    updated_user.role = post_data["role"]
+    updated_user.superUser = post_data["superUser"]
+    updated_user.save()
+    return JsonResponse(model_to_dict(updated_user))
 
 
 # aanmelden 

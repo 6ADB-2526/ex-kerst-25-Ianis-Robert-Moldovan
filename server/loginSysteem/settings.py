@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gebruikers'
+    'gebruikers' # hier heb ik mijn gebruikers toegevoegd
 ]
 
 MIDDLEWARE = [

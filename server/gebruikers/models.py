@@ -1,6 +1,10 @@
 from django.db import models
 
 # Create your models here.
+
+# hier heb ik een model gebruikersLogin gemaakt
+# waarbij ik hem een login, password, email, role en superUser
+# gegeven heb 
 class GebruikersLogin(models.Model):
     login = models.CharField(max_length=30),
     password = models.CharField(max_length=20),
